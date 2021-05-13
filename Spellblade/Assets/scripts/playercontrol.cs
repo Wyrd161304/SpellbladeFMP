@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class playercontrol : MonoBehaviour
 {
-    Rigidbody m_Rigidbody;
+    Rigidbody rb;
     public float m_Thrust = 20f;
     private bool isGrounded = false;
     void Start()
     {
-        m_Rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -38,7 +38,7 @@ public class playercontrol : MonoBehaviour
         {
             if (isGrounded)
             {
-                m_Rigidbody.AddForce(transform.up * m_Thrust);
+                rb.AddForce(transform.up * m_Thrust);
             }
         }
     }
