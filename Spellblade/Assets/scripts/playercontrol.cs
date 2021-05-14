@@ -5,11 +5,14 @@ using UnityEngine;
 public class playercontrol : MonoBehaviour
 {
     Rigidbody rb;
+    public Animator anim;
+
     public float m_Thrust = 20f;
     private bool isGrounded = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        anim = gameObject.GetComponent<Animator>();
     }
 
     void Update()
@@ -17,11 +20,21 @@ public class playercontrol : MonoBehaviour
         //movement (CHANGE TO WASD later)
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.position += transform.forward * 30 * Time.deltaTime;
+            transform.position += transform.right * 30 * Time.deltaTime;
+            anim.SetBool("isrunning", true);
+        }
+        else
+        {
+            anim.SetBool("isrunning", false);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            transform.position += (-transform.forward) * 24 * Time.deltaTime;
+            transform.position += (-transform.right) * 24 * Time.deltaTime;
+            anim.SetBool("isrunning", true);
+        }
+        else
+        {
+            anim.SetBool("isrunning", false);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
