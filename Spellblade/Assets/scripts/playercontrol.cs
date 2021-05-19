@@ -4,44 +4,34 @@ using UnityEngine;
 
 public class playercontrol : MonoBehaviour
 {
-    Rigidbody rb;
-    public Animator anim;
-
+    public Rigidbody rb;
     public float m_Thrust = 20f;
     private bool isGrounded = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        anim = gameObject.GetComponent<Animator>();
     }
 
     void Update()
     {
-        //movement (CHANGE TO WASD later)
-        if (Input.GetKey(KeyCode.UpArrow))
+        //movement 
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            transform.position += transform.right * 30 * Time.deltaTime;
-            anim.SetBool("isrunning", true);
+            transform.position += (-transform.right) * 30 * Time.deltaTime;
         }
-        else
+        
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
-            anim.SetBool("isrunning", false);
+            transform.position += transform.right * 24 * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.position += (-transform.right) * 24 * Time.deltaTime;
-            anim.SetBool("isrunning", true);
-        }
-        else
-        {
-            anim.SetBool("isrunning", false);
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
+       
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             //transform.position += Vector3.left * Time.deltaTime;
             transform.Rotate(0.0f, -1.0f, 0.0f, Space.World);
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             //transform.position += Vector3.right * Time.deltaTime;
             transform.Rotate(0.0f, 1.0f, 0.0f, Space.World);
