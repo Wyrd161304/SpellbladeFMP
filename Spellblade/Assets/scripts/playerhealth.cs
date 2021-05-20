@@ -4,24 +4,14 @@ using UnityEngine;
 
 public class playerhealth : MonoBehaviour
 {
-    public int health = 100;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static int health = 100;
 
-    // Update is called once per frame
-    void Update()
+    void OnCollisionEnter(Collision collision)
     {
-        
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        //Check to see if the tag on the collider is equal to Enemy
-        if (other.tag == "Enemy")
+        if (collision.collider.tag == "Enemy")
         {
-            Debug.Log("Triggered by Enemy");
+            Debug.Log("Triggered by enemy");
+            health -= 20;
         }
     }
 }

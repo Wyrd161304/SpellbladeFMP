@@ -44,6 +44,12 @@ public class playercontrol : MonoBehaviour
                 rb.AddForce(transform.up * m_Thrust);
             }
         }
+
+        //quit
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
     void OnCollisionEnter(Collision other)
     {
