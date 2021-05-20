@@ -6,7 +6,7 @@ public class wolfdie : MonoBehaviour
 {
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Sword"))
+        if (collision.collider.tag == "Sword")
         {
             Debug.Log("Triggered by sword");
             Object.Destroy(this.gameObject);
